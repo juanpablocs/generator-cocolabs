@@ -1,0 +1,10 @@
+/**
+ * @fileoverview <%= title %>.
+ * @author <%= authorname %><<%= authoremail %>>
+ */
+ body{
+ 	background: #eee;
+ 	color: #555;
+ 	font-size: 11px;
+ 	font-family: arial;
+ }

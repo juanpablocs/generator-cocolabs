@@ -1,0 +1,13 @@
+/**
+ * @fileoverview <%= module %>.
+ * @author <%= authorname %><<%= authoremail %>>
+ */
+
+ @import "base.css";
+
+ #<%=moduleslug%>{
+ 	width: 100%;
+ 	min-height: 200px;
+ 	border:2px dashed #eee;
+ 	margin:20px auto;
+ }

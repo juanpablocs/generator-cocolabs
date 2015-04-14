@@ -1,0 +1,11 @@
+{
+  "name": "<%= appname %>",
+  "description": "<%= description %>",
+  "version": "<%= version %>",
+  "author": {
+    "name": "<%= authorname %>",
+    "email": "<%= authoremail %>",
+    "url": "https://github.com/cocolabs"
+  },
+  "dependencies": {}
+}
