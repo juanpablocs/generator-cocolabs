@@ -4,15 +4,31 @@ var yeoman 	= require('yeoman-generator');
 var _s      = require('underscore.string');
 var chalk 	= require('chalk');
 var os 		= require('os');
+var fs 		= require('fs');
 
 var CocolabsGenerator = yeoman.generators.Base.extend({
 
 	initializing: function () {
 		this.path = '.' + this.env.cwd.replace(process.cwd(), '');
-		this.pkg = require(process.cwd()+'/package.json');
+		var pkg = process.cwd()+'/package.json';
+		if(fs.existsSync(pkg))
+		{
+			this.error_project = 0;
+			this.pkg = require(pkg);
+		}
+		else
+		{
+			this.log('error: project not exists');
+			this.log('please type command:' + chalk.green('yo cocolabs') + ' for initializing project');
+			this.error_project = 1;
+		}
 	},
     prompting: function () {
     	var done = this.async();
+
+    	if(this.error_project)
+    		return;
+
     	// message
     	this.log(' ');
     	this.log('creando un modulo');
@@ -31,7 +47,7 @@ var CocolabsGenerator = yeoman.generators.Base.extend({
     		var blockPrompts = [{
 			    type: 'string',
 			    name: 'module',
-			    message: tipeo.length>3 ?'Crear Modulo? enter': 'Escribe Nombre de Modulo',
+			    message: tipeo.length>1 ?'Crear Modulo? enter': 'Escribe Nombre de Modulo',
 			    default: tipeo,
 			    validate: function (answer) {
 			        if (answer === '') {

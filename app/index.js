@@ -4,6 +4,7 @@ var yosay   = require('yosay');
 var logo    = require('./logo').CocolabsLogo;
 var _s      = require('underscore.string');
 var chalk   = require('chalk');
+var fs    = require('fs');
 
 // init app
 var CocolabsGenerator = yeoman.generators.Base.extend({
@@ -100,10 +101,10 @@ var CocolabsGenerator = yeoman.generators.Base.extend({
         authoremail: this.props.email
       };
 
-      this.mkdir('static');
-      this.mkdir('static/css');
-      this.mkdir('static/js');
-      this.mkdir('static/img');
+      fs.mkdir('static');
+      fs.mkdir('static/css');
+      fs.mkdir('static/js');
+      fs.mkdir('static/img');
 
       this.fs.copyTpl( this.templatePath('_package.json'), this.destinationPath('package.json'), context);
       this.fs.copyTpl( this.templatePath('_index.html'), this.destinationPath('index.html'), context );
